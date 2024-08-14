@@ -1,4 +1,4 @@
-<x-app-layout>       
+<x-app-layout>
     @php
         $hasConsults = false;
     @endphp
@@ -13,38 +13,37 @@
     @endforeach
 
     <div class="disp_horario" x-data="filterConsults()">
-        <div class="list1">
+        <div class="section-subtitle">
             @if(session('msg'))
                 {{ session('msg') }}
             @endif
         </div>
 
-        <h3 class="list1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Marcar Consulta') }} 
+        <h3 class="section-title">
+            {{ __('Marcar Consulta') }}
         </h3>
 
-
-        @if ($hasConsults)  
-            <div class="filter-consul">
-            <div class="esq-div  sm:max-w-md mt-6 px-6 py-4 sm:rounded-lg ">
-                <h5 class="list1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                    {{ __('Filtros') }} 
-                </h5>
-                <div class="B_D_P">
-                    <label for="start_date">Início:</label>
-                    <input class="select" type="date" x-model="startDate" id="start_date" required>
+        @if ($hasConsults)
+            <div class="filter-container">
+                <div class="form-container">
+                    <h5 class="section-title">
+                        {{ __('Filtros') }}
+                    </h5>
+                    <div class="input-group">
+                        <label for="start_date">Início:</label>
+                        <input class="input-date" type="date" x-model="startDate" id="start_date" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="end_date">Fim:</label>
+                        <input class="input-date" type="date" x-model="endDate" id="end_date" required>
+                    </div>
+                    <div class="buttons-container">
+                        <x-primary-button @click="filterConsults">Filtrar</x-primary-button>
+                    </div>
                 </div>
-                <div class="B_D_P">
-                    <label for="end_date">Fim:</label>
-                    <input class="select" type="date" x-model="endDate" id="end_date" required>
-                </div>
-                <div class="center1">
-                    <x-primary-button @click="filterConsults">Filtrar</x-primary-button>
-                </div> 
-            </div>
             </div>
             <div class="consul-contei">
-                <table>
+                <table class="consul-table">
                     <thead>
                         <tr>
                             <th>Profissional</th>
@@ -57,7 +56,7 @@
                     <tbody>
                         @foreach ($sortedConsults as $consult)
                             @if($consult->paciente_id == null && strtotime($consult->date) > time())
-                                <tr  class="consult-row" data-date="{{ date('Y-m-d', strtotime($consult->date)) }}" >
+                                <tr class="consult-row" data-date="{{ date('Y-m-d', strtotime($consult->date)) }}">
                                     <td>{{ $users->find($consult->profissional_id)->name }}</td>
                                     <td>{{ date('d-m-Y', strtotime($consult->date)) }}</td>
                                     <td>{{ date('H:i', strtotime($consult->date)) }}</td>
@@ -76,7 +75,7 @@
                 </table>
             </div>
         @else
-            <p class="list1">Não há consultas disponíveis para agendamento no momento.</p>
+            <p class="section-subtitle">Não há consultas disponíveis para agendamento no momento.</p>
         @endif
     </div>
 </x-app-layout>

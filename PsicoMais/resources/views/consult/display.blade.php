@@ -1,12 +1,13 @@
 <x-app-layout>
     <div class="disp_horario" x-data="filterConsults()">
-        <div class="list1">
+        <div class="section-subtitle">
             @if(session('msg'))
                 <div class="{{ session('class') }}" x-init="hideDivsAfterDelay">
                     {{ session('msg') }}
                 </div>
             @endif
         </div>
+
         @php
             $hasAvailableConsults = false;
         @endphp
@@ -19,40 +20,41 @@
                 @endphp
             @endif
         @endforeach
-        <h3 class="list1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+
+        <h3 class="section-title">
             {{ __('Consultas Disponibilizadas :') }}
         </h3>
-            
 
         @if ($hasAvailableConsults)
-        <div class="filter-consul">
-          <div class="esq-div  sm:max-w-md mt-6 px-6 py-4 sm:rounded-lg ">
-            <h5 class="list1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ __('Filtros') }} 
-            </h5>
-            <div class="B_D_P">
-                <label for="start_date">Início:</label>
-                <input class="select" type="date" x-model="startDate" id="start_date" required>
+            <div class="filter-container">
+                <div class="form-container">
+                    <h5 class="section-title">
+                        {{ __('Filtros') }}
+                    </h5>
+                    <div class="input-group">
+                        <label for="start_date">Início:</label>
+                        <input class="input-date" type="date" x-model="startDate" id="start_date" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="end_date">Fim:</label>
+                        <input class="input-date" type="date" x-model="endDate" id="end_date" required>
+                    </div>
+                    <div class="buttons-container">
+                        <x-primary-button @click="filterConsults">Filtrar</x-primary-button>
+                    </div>
+                    <div class="buttons-container">
+                        <form action="{{ route('consult.create') }}" method="POST">
+                            @csrf
+                            <button type="submit">
+                                <img src="{{ asset('images/icon_add.png') }}" width="50" height="50" alt="Adicionar Consulta">
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="B_D_P">
-                <label for="end_date">Fim:</label>
-                <input class="select" type="date" x-model="endDate" id="end_date" required>
-            </div>
-            <div class="center1">
-                <x-primary-button @click="filterConsults" >Filtrar</x-primary-button>
-            </div> 
-            <div class="dir-div">
-                <form action="{{ route('consult.create' ) }}" method="POST">
-                    @csrf
-                    <button type="submit"><img src="{{ asset('images/icon_add.png')}}" width="50px" height="50px"></button>
-                </form>
-            </div>
-          </div>
-          
-        </div>
-        </div>
+
             <div class="consul-contei">
-                <table class="consul-contei:nth-child(even)">
+                <table class="consul-table">
                     <thead>
                         <tr>
                             <th>Data</th>
@@ -62,14 +64,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                    
                         @foreach ($sortedConsults as $consult)
                             @if (!$consult->paciente_id && $consult->profissional_id == auth()->user()->id)
                                 <tr class="consult-row" data-date="{{ date('Y-m-d', strtotime($consult->date)) }}">
                                     <td>{{ date('d-m-Y', strtotime($consult->date)) }}</td>
                                     <td>{{ date('H:i', strtotime($consult->date)) }}</td>
                                     <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
-                                    <td> 
+                                    <td>
                                         <form action="{{ route('consult.destroy', $consult->id) }}" method="POST">
                                             @csrf
                                             <x-primary-button type="submit" data-confirm="Tem certeza que deseja excluir?">Excluir</x-primary-button>
@@ -83,14 +84,16 @@
             </div>
         @else
             <div class="disp_horario">
-                <p class="list1">Não há consultas disponibilizadas não agendadas.</p>
-                <div class="center">
-                    <form action="{{ route('consult.create' ) }}" method="POST">
+                <p class="section-subtitle">Não há consultas disponibilizadas não agendadas.</p>
+                <div class="buttons-container">
+                    <form action="{{ route('consult.create') }}" method="POST">
                         @csrf
-                        <button type="submit"><img src="{{ asset('images/icon_add.png')}}" width="50px" height="50px"></button>
+                        <button type="submit">
+                            <img src="{{ asset('images/icon_add.png') }}" width="50" height="50" alt="Adicionar Consulta">
+                        </button>
                     </form>
                 </div>
-            </div>    
+            </div>
         @endif
     </div>
 </x-app-layout>
