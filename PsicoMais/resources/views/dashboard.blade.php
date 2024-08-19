@@ -62,7 +62,7 @@
                                                 <td>
                                                     <form action="{{ route('consult.cancel', $consult->id) }}" method="POST">
                                                         @csrf
-                                                        <button type="submit" class="primary-button" onclick="return confirm('Tem certeza que deseja desmarcar?')">Cancelar Consulta</button>
+                                                        <button type="submit" class="primary-button" onclick="return confirm('Tem certeza que deseja desmarcar?')">Cancelar</button>
                                                     </form>
                                                 </td>
                                                 @if(Auth::user()->type == 'Profissional')

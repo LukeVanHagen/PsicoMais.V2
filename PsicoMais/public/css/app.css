@@ -1933,10 +1933,11 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, a, button {
   gap: 15px; /* Espaçamento entre os botões */
   margin-top: 15px;
   width: 100%; /* Garante que o conteúdo ocupe a largura total */
+
 }
 
 /* Ajuste para o botão de filtro e o ícone de adicionar */
-.primary-button,
+
 .add-icon {
   width: auto; /* Garante que os botões respeitem o tamanho do conteúdo */
 }
@@ -2103,3 +2104,186 @@ p.list1 {
   }
 }
 
+
+
+
+
+
+/*EDIT */
+
+.imput-label{
+  background-color: #70C1E8;
+}
+
+/* Section Styles */
+.section {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+/* Header Styles */
+.section-header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.section-description {
+  font-size: 14px;
+  color: #666666;
+}
+
+/* Card Styles */
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  max-width: 100%;
+}
+
+/* Form Input Styles */
+.input-field, .input-date, .input-password {
+  width: 100%;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.input-field:focus, .input-date:focus, .input-password:focus {
+  border-color: #888888;
+  outline: none;
+  box-shadow: 0 0 5px rgba(229, 231, 235, 1);
+}
+
+/* Error Message Styles */
+.error-message {
+  color: #e63946;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Button Styles */
+.delete-button, .confirm-delete-button {
+  background-color: rgb(229 231 235);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.confirm-delete-button:hover {
+  background-color: WHITE;
+}
+
+.delete-button {
+  background-color: #e63946;
+}
+
+.delete-button:hover {
+  background-color: #d62828;
+}
+
+.cancel-button {
+  background-color: #888888;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.cancel-button:hover {
+  background-color: #666666;
+}
+
+.verification-button {
+  background: none;
+  border: none;
+  color: #007BFF;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.verification-button:hover {
+  color: #0056b3;
+}
+
+/* Button Container Styles */
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+/* Form Actions Styles */
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.form-actions.flex-column {
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Status Message Styles */
+.status-message, .status-update-message {
+  font-size: 14px;
+  color: #4CAF50;
+  margin-top: 5px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Modal Styles */
+.modal-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.modal-description {
+  font-size: 14px;
+  color: #666666;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .card, .section {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .delete-button, .confirm-delete-button, .cancel-button {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .buttons-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
