@@ -23875,3 +23875,13 @@ document.addEventListener('alpine:init', () => {
   Alpine.start();
   hideDivsAfterDelay();
 });
+
+function showNoteForm(consultId) {
+    var form = document.getElementById('note-form-' + consultId);
+    form.style.display = 'block';
+}
+
+function showNote(consultId) {
+    var noteDisplay = document.getElementById('note-display-' + consultId);
+    noteDisplay.style.display = 'block';
+}
