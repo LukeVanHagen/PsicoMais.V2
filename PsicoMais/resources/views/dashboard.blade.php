@@ -80,7 +80,7 @@
                             </table>
                         </div>
                     @else
-                        <p class="list1">Não há consultas agendadas.</p>
+                        <p class="section-subtitle">Não há consultas agendadas.</p>
                     @endif
                 </div>
             </div>

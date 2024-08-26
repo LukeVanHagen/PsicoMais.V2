@@ -31,7 +31,7 @@
         <div class="relative flex items-top justify-center min-h-screen bg-white-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
           <!--Navbar com login e registro -->
         <div class="w3-top ">
-                <div class="w3-bar w3-blue  w3-padding w3-card">
+                <div class=" nav w3-bar   w3-padding w3-card">
 
                   <a href="#" class="w3-bar-item ">
                   <b class="text-lg font-semibold">

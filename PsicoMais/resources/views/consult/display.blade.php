@@ -22,7 +22,7 @@
         @endforeach
 
         <h3 class="section-title">
-            {{ __('Consultas Disponibilizadas :') }}
+            {{ __('Consultas Disponibilizadas ') }}
         </h3>
 
         @if ($hasAvailableConsults)

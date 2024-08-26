@@ -44,8 +44,15 @@
 
 
 <style>
-/*REGISTER/LOGIN*/
-
+:root {
+  --primary-color: #52b1ff; /* Azul Brilhante */
+  --secondary-light: #a3d5ff; /* Azul Claro */
+  --secondary-dark: #1e81d3; /* Azul Médio */
+  --accent-color: #ffb152; /* Laranja Suave */
+  --background-light: #f1faff; /* Cinza Azulado Claro */
+  --text-color-dark: #333333; /* Cinza Escuro */
+  --highlight-color: #ff5252; /* Vermelho Suave */
+}
 
 /* Global Reset and Base Styles */
 body, h1, h2, h3, h4, h5, h6, p, ul, ol, a, button {
@@ -57,7 +64,7 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, a, button {
 
 /* Body Background */
 body {
-  background-color: #f4f4f4;
+  background-color: var(--background-light);
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -80,7 +87,7 @@ body {
 /* Lado esquerdo com imagem */
 .left-side {
   flex: 1;
-  background-color: #e0e0e0;
+  background-color: var(--secondary-light);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,7 +130,7 @@ form:hover {
 label {
   display: block;
   font-size: 14px;
-  color: #333333;
+  color: var(--text-color-dark);
   margin-bottom: 8px;
 }
 
@@ -135,7 +142,7 @@ select {
   width: 100%;
   padding: 12px;
   border-radius: 4px;
-  border: 1px solid #cccccc;
+  border: 1px solid var(--secondary-light);
   font-size: 16px;
   background-color: #f9f9f9;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -146,8 +153,8 @@ input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="text"]:focus,
 select:focus {
-  border-color: #007BFF;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(82, 177, 255, 0.5);
   outline: none;
 }
 
@@ -157,36 +164,36 @@ input[type="checkbox"] {
 
 /* Error Message Styles */
 .error-message {
-  color: #e63946;
+  color: var(--highlight-color);
   font-size: 12px;
   margin-top: 5px;
 }
 
 /* Button Styles */
 button.primary-button {
-  background-color: #007BFF;
+  background-color: var(--primary-color);
   color: #ffffff;
-  padding: 10px 15px; /* Diminuído para menor tamanho */
+  padding: 10px 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 14px; /* Ajustado para menor tamanho */
+  font-size: 14px;
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 button.primary-button:hover {
-  background-color: #0056b3;
-  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+  background-color: var(--secondary-dark);
+  box-shadow: 0 4px 8px rgba(82, 177, 255, 0.3);
 }
 
 button.primary-button:focus {
   outline: none;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  box-shadow: 0 0 5px rgba(82, 177, 255, 0.5);
 }
 
 /* Link Styles */
 a {
-  color: #007BFF;
+  color: var(--primary-color);
   text-decoration: none;
 }
 
@@ -217,7 +224,7 @@ a:hover {
 
 .button-container a {
   font-size: 14px;
-  color: #007BFF;
+  color: var(--primary-color);
   text-decoration: none;
   transition: color 0.3s;
 }
