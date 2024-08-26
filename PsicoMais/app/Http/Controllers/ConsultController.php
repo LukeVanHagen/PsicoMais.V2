@@ -177,4 +177,24 @@ class ConsultController extends Controller
             'class' => 'msg verde'
         ]);
     }
+        public function storeNote(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'consult_id' => 'required|exists:consults,id',
+            'nota' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('consult.history')->withErrors($validator)->withInput();
+        }
+
+        $consult = Consult::find($request->input('consult_id'));
+        $consult->nota = $request->input('nota');
+        $consult->save();
+
+        return redirect()->route('consult.history')->with([
+            'msg' => 'Nota adicionada com sucesso!',
+            'class' => 'msg verde'
+        ]);
+    }
 }

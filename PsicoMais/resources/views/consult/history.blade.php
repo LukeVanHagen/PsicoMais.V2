@@ -32,6 +32,7 @@
                             <th>Data</th>
                             <th>Início</th>
                             <th>Término</th>
+                            <th>Nota</th> <!-- Coluna para o botão de adição de nota -->
                         </tr>
                     </thead>
                     <tbody>
@@ -49,6 +50,26 @@
                                     <td>{{ date('d-m-Y', strtotime($consult->date)) }}</td>
                                     <td>{{ date('H:i', strtotime($consult->date)) }}</td>
                                     <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
+                                    <td>
+                                        <!-- Botão para exibir o campo de nota -->
+                                        <button type="button" class="btn btn-sm btn-primary" onclick="showNoteForm({{ $consult->id }})">Adicionar Nota</button>
+
+                                        <!-- Formulário de adição de nota (inicialmente oculto) -->
+                                        <form id="note-form-{{ $consult->id }}" action="{{ route('notas.store') }}" method="POST" style="display:none;">
+                                            @csrf
+                                            <input type="hidden" name="consult_id" value="{{ $consult->id }}">
+                                            <input type="text" name="nota" class="form-control" placeholder="Digite a nota">
+                                            <button type="submit" class="btn btn-sm btn-success mt-2">Salvar</button>
+                                        </form>
+
+                                        <!-- Botão para ver a nota existente -->
+                                        <button type="button" class="btn btn-sm btn-info mt-2" onclick="showNote({{ $consult->id }})">Ver Nota</button>
+
+                                        <!-- Campo para exibir a nota cadastrada (inicialmente oculto) -->
+                                        <div id="note-display-{{ $consult->id }}" style="display:none; margin-top: 5px;">
+                                            <strong>Nota:</strong> <span id="note-text-{{ $consult->id }}">{{ $consult->nota }}</span>
+                                        </div>
+                                    </td>
                                 </tr>
                             @endif
                         @endforeach
@@ -59,4 +80,16 @@
             <p class="section-subtitle">Você não possui nenhuma consulta realizada.</p>
         @endif
     </div>
+
+    <script>
+        function showNoteForm(consultId) {
+            var form = document.getElementById('note-form-' + consultId);
+            form.style.display = 'block';
+        }
+
+        function showNote(consultId) {
+            var noteDisplay = document.getElementById('note-display-' + consultId);
+            noteDisplay.style.display = 'block';
+        }
+    </script>
 </x-app-layout>

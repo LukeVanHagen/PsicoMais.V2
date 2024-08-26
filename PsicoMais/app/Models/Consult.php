@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Consult extends Model
 {
     protected $fillable = [
-        'profissional_id', 'paciente_id', 'date','time','end_time',
+        'profissional_id', 'paciente_id', 'date','time','end_time','nota',
     ];
 
     public function profissional()
