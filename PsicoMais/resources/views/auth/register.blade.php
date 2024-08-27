@@ -2,7 +2,7 @@
 <x-guest-layout>
 
 
-
+<div class= 'container'>
 
     <form method="POST" action="{{ route('register') }}">
         @csrf
@@ -58,6 +58,7 @@
             <button type="submit" class="primary-button">Registrar-se</button>
         </div>
     </form>
+  </div>
 </x-guest-layout>
 
 
@@ -126,6 +127,19 @@ body {
   padding: 20px;
   background-color: #ffffff;
 }
+
+.container {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  height: 65vh;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.9); /* Fundo branco com 90% de opacidade */
+  backdrop-filter: blur(10px); /* Opcional: adiciona um efeito de desfoque ao fundo */
+}
+
 
 form {
   width: 100%;
