@@ -13,7 +13,7 @@
         <!-- Email Address -->
         <div class="input-group">
             <label for="email">Email</label>
-            <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username">
+            <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" placeholder = "Digite seu e-mail">
             @error('email')
                 <span class="error-message">{{ $message }}</span>
             @enderror
@@ -22,7 +22,7 @@
         <!-- Password -->
         <div class="input-group">
             <label for="password">Senha</label>
-            <input id="password" type="password" name="password" required autocomplete="current-password">
+            <input id="password" type="password" name="password" required autocomplete="current-password" placeholder =  "Digite sua senha">
             @error('password')
                 <span class="error-message">{{ $message }}</span>
             @enderror

@@ -10,7 +10,7 @@
         <!-- Name -->
         <div class="input-group">
             <label for="name">Nome</label>
-            <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name">
+            <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name" placeholder =  "Digite seu nome">
             @error('name')
                 <span class="error-message">{{ $message }}</span>
             @enderror
@@ -28,7 +28,7 @@
         <!-- Email Address -->
         <div class="input-group">
             <label for="email">Email</label>
-            <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="username">
+            <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="username"placeholder =  "Digite seu e-mail">
             @error('email')
                 <span class="error-message">{{ $message }}</span>
             @enderror
@@ -37,7 +37,7 @@
         <!-- Password -->
         <div class="input-group">
             <label for="password">Senha</label>
-            <input id="password" type="password" name="password" required autocomplete="new-password">
+            <input id="password" type="password" name="password" required autocomplete="new-password" placeholder =  "Digite sua senha">
             @error('password')
                 <span class="error-message">{{ $message }}</span>
             @enderror
@@ -46,7 +46,7 @@
         <!-- Confirm Password -->
         <div class="input-group">
             <label for="password_confirmation">Confirme a Senha</label>
-            <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password">
+            <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" placeholder =  "Confirme sua senha">
             @error('password_confirmation')
                 <span class="error-message">{{ $message }}</span>
             @enderror
