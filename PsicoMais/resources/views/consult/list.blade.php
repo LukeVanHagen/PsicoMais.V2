@@ -38,7 +38,7 @@
                         <input class="input-date" type="date" x-model="endDate" id="end_date" required>
                     </div>
                     <div class="buttons-container">
-                        <x-primary-button @click="filterConsults">Filtrar</x-primary-button>
+                        <x-primary-button class="Est_button" @click="filterConsults" >Filtrar</x-primary-button>
                     </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                                         <form action="{{ route('consult.mark', $consult->id) }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                            <x-primary-button type="submit">Marcar Consulta</x-primary-button>
+                                            <x-primary-button class="Est_button" type="submit">Marcar Consulta</x-primary-button>
                                         </form>
                                     </td>
                                 </tr>

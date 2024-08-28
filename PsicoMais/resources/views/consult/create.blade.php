@@ -24,7 +24,7 @@
                 </p>
             </div>
             <div class="buttons-container">
-                <x-primary-button>
+                <x-primary-button class="Est_button">
                     {{ __('Enviar') }}
                 </x-primary-button>
             </div>

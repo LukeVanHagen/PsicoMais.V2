@@ -48,7 +48,7 @@
         </div>
 
         <div class="form-actions flex items-center gap-4 mt-6">
-            <x-primary-button class="primary-button bg-[rgb(229,231,235)] text-gray-900 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 px-4 py-2 rounded-md text-base">
+            <x-primary-button class="Est_button">
                 {{ __('Salvar') }}
             </x-primary-button>
 

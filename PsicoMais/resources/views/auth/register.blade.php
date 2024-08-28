@@ -55,7 +55,7 @@
         <!-- Action Buttons -->
         <div class="button-container">
             <a href="{{ route('login') }}">Já tem uma conta?</a>
-            <button type="submit" class="primary-button">Registrar-se</button>
+            <x-primary-button type="submit" class="Est_button">Registrar-se</x-primary-button>
         </div>
     </form>
   </div>
@@ -138,6 +138,29 @@ body {
   overflow: hidden;
   background-color: rgba(255, 255, 255, 0.9); /* Fundo branco com 90% de opacidade */
   backdrop-filter: blur(10px); /* Opcional: adiciona um efeito de desfoque ao fundo */
+}
+
+/* Espaçamento entre o botão e o texto */
+.Est_button {
+  background-color: var(--background-light);
+  color: var(--text-color-dark);
+  padding: 10px 15px;
+  border: solid 1px var(--primary-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+  margin-left: 40px; /* Espaço equivalente a um dedo (~16px) */
+}
+
+.Est_button:hover {
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.Est_button:focus {
+  outline: none;
+  box-shadow: 0 0 5px var(--accent-color);
 }
 
 

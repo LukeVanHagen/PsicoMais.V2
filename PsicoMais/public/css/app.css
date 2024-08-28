@@ -1233,7 +1233,7 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, a, button {
 
 /* Button Styles */
 .primary-button, .dropdown-trigger {
-  background-color: var(--secondary-light);
+  background-color: black;
   color: var(--text-color-dark);
   padding: 10px 15px;
   border: none;
@@ -1249,6 +1249,27 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, a, button {
 }
 
 .primary-button:focus, .dropdown-trigger:focus {
+  outline: none;
+  box-shadow: 0 0 5px var(--accent-color);
+}
+
+.Est_button{
+  background-color: var(--background-light);
+  color: var(--text-color-dark);
+  padding: 10px 15px;
+  border: solid 1px var(--primary-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+}
+
+.Est_button:hover{
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.Est_button:focus{
   outline: none;
   box-shadow: 0 0 5px var(--accent-color);
 }
@@ -1330,10 +1351,12 @@ p.list1 {
 
 .nav-logo {
   flex: 1;
+
 }
 
 .nav-logo img {
   height: 60px;
+  
 }
 
 .nav-links {
@@ -1673,6 +1696,39 @@ p.list1 {
   margin-top: 20px;
 }
 
+/* Estilo do campo de input para notas */
+.input-field1 {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 2px solid #007BFF; /* Borda azul */
+  outline: none;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2); /* Leve sombra azul */
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Estilo do campo de exibição de nota (aplica borda e sombreamento) */
+.note-text-field {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 2px solid #007BFF; /* Borda azul */
+  outline: none;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2); /* Leve sombra azul */
+  background-color: #f9f9f9; /* Cor de fundo leve para destacar a nota */
+  color: #333; /* Cor do texto */
+}
+
+
+.input-field1:focus {
+  border-color: #0056b3; /* Cor da borda ao focar (azul mais escuro) */
+  box-shadow: 0 4px 8px rgba(0, 86, 179, 0.4); /* Aumenta a sombra ao focar */
+}
+
 /* Overlay Styles */
 .note-overlay {
   display: none;
@@ -1684,7 +1740,6 @@ p.list1 {
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 1000;
 }
-
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
@@ -1702,3 +1757,5 @@ p.list1 {
       width: 100%;
   }
 }
+
+

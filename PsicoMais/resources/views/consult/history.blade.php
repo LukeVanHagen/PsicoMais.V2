@@ -52,12 +52,9 @@
                                     @if(Auth::check() && Auth::user()->type == 'Profissional')
                                         <td>
                                             <!-- Botões de Ação -->
-                                            <div class="note-actions">
-                                                <!-- Botão para exibir o pop-up de adicionar nota -->
-                                                <button type="button" class="primary-button" onclick="showNoteForm({{ $consult->id }})">Adicionar </button>
-
-                                                <!-- Botão para ver a nota existente -->
-                                                <button type="button" class="primary-button" onclick="showNotePopup({{ $consult->id }})">Ver Nota</button>
+                                            <div class="note-actions" style="display: flex; justify-content: space-between;">
+                                                <x-primary-button type="button" class="Est_button" onclick="showNoteForm({{ $consult->id }})">Adicionar</x-primary-button>
+                                                <x-primary-button type="button" class="Est_button" onclick="showNotePopup({{ $consult->id }})">Ver Nota</x-primary-button>
                                             </div>
 
                                             <!-- Pop-up de adição de nota -->
@@ -67,23 +64,25 @@
                                                 <form id="note-form-{{ $consult->id }}" action="{{ route('notas.store') }}" method="POST">
                                                     @csrf
                                                     <input type="hidden" name="consult_id" value="{{ $consult->id }}">
-                                                    <input type="text" name="nota" class="input-field" placeholder="Digite a nota">
+                                                    <input type="text" name="nota" class="input-field1" placeholder="Digite a nota">
                                                     <div class="popup-actions">
-                                                        <button type="submit" class="primary-button">Salvar</button>
-                                                        <button type="button" class="primary-button" onclick="closeNotePopup({{ $consult->id }})">Cancelar</button>
+                                                        <x-primary-button type="submit" class="Est_button">Salvar</x-primary-button>
+                                                        <x-primary-button type="button" class="Est_button" onclick="closeNotePopup({{ $consult->id }})">Cancelar</x-primary-button>
                                                     </div>
                                                 </form>
                                             </div>
 
-                                            <!-- Pop-up de exibição de nota -->
-                                            <div id="note-popup-view-{{ $consult->id }}" class="note-popup">
-                                                <button type="button" class="popup-close" onclick="closeNotePopup({{ $consult->id }})">X</button>
-                                                <div class="popup-title">Nota</div>
-                                                <div id="note-text-{{ $consult->id }}">{{ $consult->nota }}</div>
-                                                <div class="popup-actions">
-                                                    <button type="button" class="primary-button" onclick="closeNotePopup({{ $consult->id }})">Fechar</button>
+                                                <!-- Pop-up de exibição de nota -->
+                                                <div id="note-popup-view-{{ $consult->id }}" class="note-popup">
+                                                    <button type="button" class="popup-close" onclick="closeNotePopup({{ $consult->id }})">X</button>
+                                                    <div class="popup-title">Nota</div>
+                                                    <!-- Aplicando o estilo ao campo de exibição de nota -->
+                                                    <div id="note-text-{{ $consult->id }}" class="note-text-field">{{ $consult->nota }}</div>
+                                                    <div class="popup-actions">
+                                                        <x-primary-button type="button" class="Est_button" onclick="closeNotePopup({{ $consult->id }})">Fechar</x-primary-button>
+                                                    </div>
                                                 </div>
-                                            </div>
+
 
                                             <!-- Overlay de fundo para o pop-up -->
                                             <div id="note-overlay-{{ $consult->id }}" class="note-overlay" onclick="closeNotePopup({{ $consult->id }})"></div>

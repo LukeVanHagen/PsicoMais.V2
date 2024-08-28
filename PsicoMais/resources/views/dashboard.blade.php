@@ -62,14 +62,14 @@
                                                 <td>
                                                     <form action="{{ route('consult.cancel', $consult->id) }}" method="POST">
                                                         @csrf
-                                                        <button type="submit" class="primary-button" onclick="return confirm('Tem certeza que deseja desmarcar?')">Cancelar</button>
+                                                        <x-primary-button type="submit" class="Est_button" onclick="return confirm('Tem certeza que deseja desmarcar?')">Cancelar</x-primary-button>
                                                     </form>
                                                 </td>
                                                 @if(Auth::user()->type == 'Profissional')
                                                     <td>
                                                         <form action="{{ route('consult.destroy', $consult->id) }}" method="POST">
                                                             @csrf
-                                                            <button type="submit" class="primary-button" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
+                                                            <x-primary-button type="submit" class="Est_button" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</x-primary-button>
                                                         </form>
                                                     </td>
                                                 @endif

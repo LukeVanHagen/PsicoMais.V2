@@ -165,7 +165,7 @@
     <x-danger-button
         x-data=""
         x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-        class="delete-button w3-blue"
+        class="Est_button"
     >{{ __('Deletar Conta') }}</x-danger-button>
 
     <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
@@ -196,11 +196,11 @@
             </div>
 
             <div class="buttons-container">
-                <x-secondary-button x-on:click="$dispatch('close')" class="cancel-button">
+                <x-secondary-button x-on:click="$dispatch('close')" class="Est_button">
                     {{ __('Cancelar') }}
                 </x-secondary-button>
 
-                <x-danger-button class="confirm-delete-button">
+                <x-danger-button class="Est_button">
                     {{ __('Deletar Conta') }}
                 </x-danger-button>
             </div>

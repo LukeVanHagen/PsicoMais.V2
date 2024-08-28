@@ -37,7 +37,7 @@
         <!-- Action Buttons -->
         <div class="button-container">
             <a href="{{ route('register') }}">Registrar-se</a>
-            <button type="submit" class="primary-button">Entrar</button>
+            <x-primary-button type="submit" class="Est_button">Entrar</x-primary-button>
         </div>
     </form>
   </div>
@@ -172,6 +172,30 @@ input[type="checkbox"] {
 }
 
 /* Button Styles */
+
+.Est_button {
+  background-color: var(--background-light);
+  color: var(--text-color-dark);
+  padding: 10px 15px;
+  border: solid 1px var(--primary-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+  margin-left: 60px; /* Espaço equivalente a um dedo (~16px) */
+}
+
+.Est_button:hover {
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.Est_button:focus {
+  outline: none;
+  box-shadow: 0 0 5px var(--accent-color);
+}
+
+
 button.primary-button {
   background-color: var(--primary-color);
   color: #ffffff;
