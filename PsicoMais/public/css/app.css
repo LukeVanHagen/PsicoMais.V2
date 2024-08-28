@@ -1617,3 +1617,88 @@ p.list1 {
     align-items: stretch;
   }
 }
+
+
+
+/*Estilização das Notas*/
+
+/* Pop-up Styles */
+.note-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  z-index: 1001;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.note-popup.fade-in {
+  opacity: 1;
+}
+
+.popup-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--text-color-dark);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--text-color-dark);
+}
+
+.popup-close:hover {
+  color: var(--highlight-color);
+}
+
+.popup-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Overlay Styles */
+.note-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .note-popup {
+      max-width: 100%;
+      padding: 15px;
+  }
+
+  .popup-actions {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .primary-button {
+      width: 100%;
+  }
+}

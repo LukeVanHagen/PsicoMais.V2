@@ -38,10 +38,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @php
-                            $consults = $sortedConsults;
-                        @endphp
-                        @foreach ($consults as $consult)
+                        @foreach ($sortedConsults as $consult)
                             @if (($consult->paciente_id == Auth::id() || $consult->profissional_id == Auth::id()) && strtotime($consult->date) < time() && $consult->paciente_id != null)
                                 <tr class="consult-row">
                                     @if ($consult->profissional_id == Auth::id())
@@ -54,24 +51,42 @@
                                     <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
                                     @if(Auth::check() && Auth::user()->type == 'Profissional')
                                         <td>
-                                            <!-- Botão para exibir o campo de nota -->
-                                            <button type="button" class="btn btn-sm btn-primary" onclick="showNoteForm({{ $consult->id }})">Adicionar Nota</button>
+                                            <!-- Botões de Ação -->
+                                            <div class="note-actions">
+                                                <!-- Botão para exibir o pop-up de adicionar nota -->
+                                                <button type="button" class="primary-button" onclick="showNoteForm({{ $consult->id }})">Adicionar </button>
 
-                                            <!-- Formulário de adição de nota (inicialmente oculto) -->
-                                            <form id="note-form-{{ $consult->id }}" action="{{ route('notas.store') }}" method="POST" style="display:none;">
-                                                @csrf
-                                                <input type="hidden" name="consult_id" value="{{ $consult->id }}">
-                                                <input type="text" name="nota" class="form-control" placeholder="Digite a nota">
-                                                <button type="submit" class="btn btn-sm btn-success mt-2">Salvar</button>
-                                            </form>
-
-                                            <!-- Botão para ver a nota existente -->
-                                            <button type="button" class="btn btn-sm btn-info mt-2" onclick="showNote({{ $consult->id }})">Ver Nota</button>
-
-                                            <!-- Campo para exibir a nota cadastrada (inicialmente oculto) -->
-                                            <div id="note-display-{{ $consult->id }}" style="display:none; margin-top: 5px;">
-                                                <strong>Nota:</strong> <span id="note-text-{{ $consult->id }}">{{ $consult->nota }}</span>
+                                                <!-- Botão para ver a nota existente -->
+                                                <button type="button" class="primary-button" onclick="showNotePopup({{ $consult->id }})">Ver Nota</button>
                                             </div>
+
+                                            <!-- Pop-up de adição de nota -->
+                                            <div id="note-popup-{{ $consult->id }}" class="note-popup">
+                                                <button type="button" class="popup-close" onclick="closeNotePopup({{ $consult->id }})">X</button>
+                                                <div class="popup-title">Adicionar Nota</div>
+                                                <form id="note-form-{{ $consult->id }}" action="{{ route('notas.store') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="consult_id" value="{{ $consult->id }}">
+                                                    <input type="text" name="nota" class="input-field" placeholder="Digite a nota">
+                                                    <div class="popup-actions">
+                                                        <button type="submit" class="primary-button">Salvar</button>
+                                                        <button type="button" class="primary-button" onclick="closeNotePopup({{ $consult->id }})">Cancelar</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                            <!-- Pop-up de exibição de nota -->
+                                            <div id="note-popup-view-{{ $consult->id }}" class="note-popup">
+                                                <button type="button" class="popup-close" onclick="closeNotePopup({{ $consult->id }})">X</button>
+                                                <div class="popup-title">Nota</div>
+                                                <div id="note-text-{{ $consult->id }}">{{ $consult->nota }}</div>
+                                                <div class="popup-actions">
+                                                    <button type="button" class="primary-button" onclick="closeNotePopup({{ $consult->id }})">Fechar</button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Overlay de fundo para o pop-up -->
+                                            <div id="note-overlay-{{ $consult->id }}" class="note-overlay" onclick="closeNotePopup({{ $consult->id }})"></div>
                                         </td>
                                     @endif
                                 </tr>
@@ -85,3 +100,27 @@
         @endif
     </div>
 </x-app-layout>
+
+<script>
+    function showNoteForm(consultId) {
+        document.getElementById('note-popup-' + consultId).style.display = 'block';
+        document.getElementById('note-overlay-' + consultId).style.display = 'block';
+        document.getElementById('note-popup-' + consultId).classList.add('fade-in');
+    }
+
+    function showNotePopup(consultId) {
+        document.getElementById('note-popup-view-' + consultId).style.display = 'block';
+        document.getElementById('note-overlay-' + consultId).style.display = 'block';
+        document.getElementById('note-popup-view-' + consultId).classList.add('fade-in');
+    }
+
+    function closeNotePopup(consultId) {
+        document.getElementById('note-popup-' + consultId).classList.remove('fade-in');
+        document.getElementById('note-popup-view-' + consultId).classList.remove('fade-in');
+        setTimeout(function() {
+            document.getElementById('note-popup-' + consultId).style.display = 'none';
+            document.getElementById('note-popup-view-' + consultId).style.display = 'none';
+            document.getElementById('note-overlay-' + consultId).style.display = 'none';
+        }, 300);
+    }
+</script>
