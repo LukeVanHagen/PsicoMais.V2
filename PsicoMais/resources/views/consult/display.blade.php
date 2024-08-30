@@ -40,7 +40,7 @@
                         <input class="input-date" type="date" x-model="endDate" id="end_date" required>
                     </div>
                     <div class="buttons-container">
-                        <x-primary-button @click="filterConsults">Filtrar</x-primary-button>
+                        <x-primary-button class="Est_button" @click="filterConsults">Filtrar</x-primary-button>
                     </div>
                     <div class="buttons-container">
                         <form action="{{ route('consult.create') }}" method="POST">
@@ -73,7 +73,7 @@
                                     <td>
                                         <form action="{{ route('consult.destroy', $consult->id) }}" method="POST">
                                             @csrf
-                                            <x-primary-button type="submit" data-confirm="Tem certeza que deseja excluir?">Excluir</x-primary-button>
+                                            <x-primary-button  class="Est_button" type="submit" data-confirm="Tem certeza que deseja excluir?">Excluir</x-primary-button>
                                         </form>
                                     </td>
                                 </tr>

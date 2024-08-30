@@ -1202,12 +1202,13 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, a, button {
 }
 
 
-/* Table Styles */
+/* Estilo para o contêiner da tabela */
 .consul-contei {
   width: 100%;
   overflow-x: auto;
 }
 
+/* Estilo para a tabela */
 .consul-table {
   width: 100%;
   border-collapse: collapse;
@@ -1215,21 +1216,50 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, a, button {
   font-size: 16px;
 }
 
-.consul-table th,
-.consul-table td {
-  text-align: left;
-  padding: 12px 15px;
-  border-bottom: 1px solid var(--secondary-light);
+/* Centralizando as linhas da tabela */
+.consult-row {
+  text-align: center;
+  align-items: center;
 }
 
+/* Estilo para cabeçalho e células da tabela */
+.consul-table th {
+  text-align: center; /* Centraliza o conteúdo horizontalmente */
+  vertical-align: middle; /* Centraliza o conteúdo verticalmente */
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--secondary-light);
+  width: 20%;
+}
+.consul-table td {
+  text-align: center; /* Centraliza o conteúdo horizontalmente */
+  vertical-align: middle; /* Centraliza o conteúdo verticalmente */
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--secondary-light);
+
+}
+
+/* Estilo para o cabeçalho da tabela */
 .consul-table th {
   background-color: var(--background-light);
   color: var(--text-color-dark);
+  font-weight: bold;
 }
 
+/* Estilo para as linhas ao passar o mouse */
 .consul-table tr:hover {
   background-color: var(--secondary-light);
 }
+
+/* Responsividade - ajusta o tamanho da tabela e do texto em telas menores */
+@media (max-width: 768px) {
+  .consul-table th, 
+  .consul-table td {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+
 
 /* Button Styles */
 .primary-button, .dropdown-trigger {

@@ -38,11 +38,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($sortedConsults as $consult)
+                        @php
+                            $consults = $sortedConsults;
+                        @endphp
+                        @foreach ($consults as $consult)
                             @if (($consult->paciente_id == Auth::id() || $consult->profissional_id == Auth::id()) && strtotime($consult->date) < time() && $consult->paciente_id != null)
                                 <tr class="consult-row">
                                     @if ($consult->profissional_id == Auth::id())
-                                        <td>{{ $users->find($consult->paciente_id)->name }}</td>
+                                        <td class="consult-row">{{ $users->find($consult->paciente_id)->name }}</td>
                                     @else
                                         <td>{{ $users->find($consult->profissional_id)->name }}</td>
                                     @endif
