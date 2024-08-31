@@ -11,16 +11,16 @@
         <!-- Navigation Links Centralizados -->
         <div class="nav-links">
             <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                {{ __('Agenda') }}
+                {{ __('Consultas') }}
             </a>
             @if(Auth::check() && Auth::user()->type == 'Profissional')
                 <a href="{{ route('consult.display') }}" class="nav-link {{ request()->routeIs('consult.display') ? 'active' : '' }}">
-                    {{ __('Horários') }}
+                    {{ __('Agendamentos') }}
                 </a>
             @endif
             @if(Auth::check() && Auth::user()->type == 'Paciente')
                 <a href="{{ route('consult.list') }}" class="nav-link {{ request()->routeIs('consult.list') ? 'active' : '' }}">
-                    {{ __('Horários') }}
+                    {{ __('Agendamentos') }}
                 </a>
             @endif
             <a href="{{ route('consult.history') }}" class="nav-link {{ request()->routeIs('consult.history') ? 'active' : '' }}">
